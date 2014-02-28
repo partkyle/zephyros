@@ -9,20 +9,20 @@ build:
 
     # Gets the dependencies
     - script:
-        name: go get
+        name: GOPATH="$PWD:$GOPATH" go get
         code: |
           cd $WERCKER_SOURCE_DIR
-          go version
-          go get -t ./...
+          GOPATH="$PWD:$GOPATH" go version
+          GOPATH="$PWD:$GOPATH" go get -t ./...
 
     # Build the project
     - script:
-        name: go build
+        name: GOPATH="$PWD:$GOPATH" go build
         code: |
-          go build ./...
+          GOPATH="$PWD:$GOPATH" go build ./...
 
     # Test the project
     - script:
-        name: go test
+        name: GOPATH="$PWD:$GOPATH" go test
         code: |
-          go test ./...
+          GOPATH="$PWD:$GOPATH" go test ./...
